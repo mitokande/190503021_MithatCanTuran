@@ -6,6 +6,7 @@ module com.example._190503021_mithat_can {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens com.example._190503021_mithat_can to javafx.fxml;
     exports com.example._190503021_mithat_can;
