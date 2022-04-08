@@ -24,7 +24,7 @@
                </children>
             </Group>
             <Button layoutX="225.0" layoutY="264.0" mnemonicParsing="false" onAction="#tryLogin" prefHeight="26.0" prefWidth="150.0" text="Giriş Yap" />
-            <Text fx:id="notif" layoutX="288.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="notif" layoutX="238.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="122.936767578125" />
          </children>
       </AnchorPane>
    </children>
