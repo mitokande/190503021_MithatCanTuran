@@ -1,5 +1,8 @@
 package com.example._190503021_mithat_can;
 
+import com.example._190503021_mithat_can.BaseClass.Klasse;
+import com.example._190503021_mithat_can.BaseClass.Lehrer;
+import com.example._190503021_mithat_can.BaseClass.SystemMethoden;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Set;
 
 public class Hydra extends Application {
     @Override
@@ -17,6 +21,13 @@ public class Hydra extends Application {
         stage.setScene(scene);
         stage.show();
         connect();
+        clastest();
+    }
+    public void clastest(){
+        SystemMethoden Settings = new SystemMethoden();
+        Klasse k = new Klasse(new Lehrer("mithat","turan","123123","mito","12312","a@g.com"),12);
+        Settings.KlasseErstellen(k);
+        Settings.ListKlasse();
     }
     public  static Connection conn = null;
 
