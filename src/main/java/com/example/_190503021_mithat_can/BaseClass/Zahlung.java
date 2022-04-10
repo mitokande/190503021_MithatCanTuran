@@ -72,14 +72,6 @@ public class Zahlung {
 
     @Override
     public String toString() {
-        return "Zahlung{" +
-                "ZahlungID=" + ZahlungID +
-                ", ZahlungPersonal=" + ZahlungPersonal +
-                ", ZahlungsArt='" + ZahlungsArt + '\'' +
-                ", KartInformation='" + KartInformation + '\'' +
-                ", Kinder=" + Kinder +
-                ", Eltern=" + Eltern +
-                ", ZahlungPreis=" + ZahlungPreis +
-                '}';
+        return ZahlungID +","+ ZahlungPersonal +"," + ZahlungsArt  +"," + KartInformation + "," + Kinder +"," + Eltern +"," + ZahlungPreis;
     }
 }

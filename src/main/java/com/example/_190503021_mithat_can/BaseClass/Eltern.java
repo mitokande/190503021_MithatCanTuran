@@ -1,8 +1,18 @@
 package com.example._190503021_mithat_can.BaseClass;
 
 public class Eltern extends Person{
+    private int ElternId;
     private String Telefonnummer;
     private String Email;
+
+    public int getElternId() {
+        return ElternId;
+    }
+
+    public void setElternId(int elternId) {
+        ElternId = elternId;
+    }
+
     private String Adresse;
     private Kinder Kinder;
 
@@ -48,11 +58,6 @@ public class Eltern extends Person{
 
     @Override
     public String toString() {
-        return "Eltern{" +
-                "Telefonnummer='" + Telefonnummer + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Adresse='" + Adresse + '\'' +
-                ", Kinder=" + Kinder +
-                '}';
+        return super.toString()+","+Telefonnummer + "," + Email +"," + Adresse + "," + Kinder;
     }
 }

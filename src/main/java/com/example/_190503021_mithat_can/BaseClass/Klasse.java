@@ -47,11 +47,6 @@ public class Klasse {
 
     @Override
     public String toString() {
-        return "Klasse{" +
-                "KlasseId=" + KlasseId +
-                ", Studenten=" + Studenten +
-                ", Lehrer=" + Lehrer +
-                ", KlassenGrosse=" + KlassenGrosse +
-                '}';
+        return KlasseId + "," + Studenten + ","+Lehrer.getLehrerId()+","+KlassenGrosse;
     }
 }

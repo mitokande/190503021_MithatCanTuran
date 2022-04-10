@@ -53,11 +53,6 @@ public class Aktivitat {
 
     @Override
     public String toString() {
-        return "Aktivitat{" +
-                "AktivitatId=" + AktivitatId +
-                ", Kinder=" + Kinder +
-                ", AktivitatGrosse=" + AktivitatGrosse +
-                ", AktivitatZeit='" + AktivitatZeit + '\'' +
-                '}';
+        return AktivitatId +"," + Kinder +"," + AktivitatGrosse +"," + AktivitatZeit ;
     }
 }

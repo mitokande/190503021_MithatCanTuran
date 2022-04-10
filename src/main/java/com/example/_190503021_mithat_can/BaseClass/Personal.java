@@ -45,11 +45,6 @@ public class Personal extends Person {
 
     @Override
     public String toString() {
-        return "Personal{" +
-                "Benutzername='" + Benutzername + '\'' +
-                ", Passwort='" + Passwort + '\'' +
-                ", Telefonnummer='" + Telefonnummer + '\'' +
-                ", Email='" + Email + '\'' +
-                '}';
+        return super.toString()+","+Benutzername+"," + Passwort +"," + Telefonnummer +"," + Email;
     }
 }

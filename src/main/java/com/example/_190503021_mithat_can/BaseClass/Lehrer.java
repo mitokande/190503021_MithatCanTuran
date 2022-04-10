@@ -28,9 +28,6 @@ public class Lehrer extends Personal{
 
     @Override
     public String toString() {
-        return "Lehrer{" +
-                "LehrerId=" + LehrerId +
-                ", Klasse=" + Klasse +
-                '}';
+        return super.toString()+","+LehrerId + ","+Klasse;
     }
 }

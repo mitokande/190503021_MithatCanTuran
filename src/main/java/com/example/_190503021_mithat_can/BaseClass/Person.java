@@ -36,10 +36,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "Vorname='" + Vorname + '\'' +
-                ", Nachname='" + Nachname + '\'' +
-                ", BurgerId='" + BurgerId + '\'' +
-                '}';
+        return super.toString()+","+Vorname +"," + Nachname +"," + BurgerId ;
     }
 }

@@ -1,8 +1,6 @@
 package com.example._190503021_mithat_can;
 
-import com.example._190503021_mithat_can.BaseClass.Klasse;
-import com.example._190503021_mithat_can.BaseClass.Lehrer;
-import com.example._190503021_mithat_can.BaseClass.SystemMethoden;
+import com.example._190503021_mithat_can.BaseClass.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,8 +24,10 @@ public class Hydra extends Application {
     public void clastest(){
         SystemMethoden Settings = new SystemMethoden();
         Klasse k = new Klasse(new Lehrer("mithat","turan","123123","mito","12312","a@g.com"),12);
-        Settings.KlasseErstellen(k);
         Settings.ListKlasse();
+        Eltern e = new Eltern("Ali","Veli","1112223332");
+        Settings.KlasseErstellen(k);
+        Settings.ElternErstellen(e);
     }
     public  static Connection conn = null;
 

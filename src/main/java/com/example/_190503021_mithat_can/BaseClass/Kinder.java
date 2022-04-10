@@ -16,8 +16,6 @@ public class Kinder extends Person{
 
     @Override
     public String toString() {
-        return "Kinder{" +
-                "Eltern=" + Eltern +
-                '}';
+        return super.toString()+","+Eltern.getElternId() + "";
     }
 }
