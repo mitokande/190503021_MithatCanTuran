@@ -2,7 +2,6 @@ package com.example._190503021_mithat_can.BaseClass;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class SystemMethoden {
     private ArrayList<Aktivitat> AktivitatList;

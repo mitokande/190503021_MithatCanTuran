@@ -48,11 +48,11 @@ public class Eltern extends Person{
         Adresse = adresse;
     }
 
-    public com.example._190503021_mithat_can.BaseClass.Kinder getKinder() {
+    public Kinder getKinder() {
         return Kinder;
     }
 
-    public void setKinder(com.example._190503021_mithat_can.BaseClass.Kinder kinder) {
+    public void setKinder(Kinder kinder) {
         Kinder = kinder;
     }
 

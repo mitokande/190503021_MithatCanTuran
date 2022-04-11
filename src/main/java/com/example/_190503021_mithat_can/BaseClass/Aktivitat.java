@@ -27,11 +27,11 @@ public class Aktivitat {
         AktivitatId = aktivitatId;
     }
 
-    public List<com.example._190503021_mithat_can.BaseClass.Kinder> getKinder() {
+    public List<Kinder> getKinder() {
         return Kinder;
     }
 
-    public void setKinder(List<com.example._190503021_mithat_can.BaseClass.Kinder> kinder) {
+    public void setKinder(List<Kinder> kinder) {
         Kinder = kinder;
     }
 
