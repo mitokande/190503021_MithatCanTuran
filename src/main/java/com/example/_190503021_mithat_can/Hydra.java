@@ -18,8 +18,8 @@ public class Hydra extends Application {
         stage.setTitle("Hydra Kindergarten!");
         stage.setScene(scene);
         stage.show();
-        connect();
-        clastest();
+        DB.connect();
+        //clastest();
     }
     public void clastest(){
         SystemMethoden Settings = new SystemMethoden();
@@ -29,25 +29,7 @@ public class Hydra extends Application {
         Settings.KlasseErstellen(k);
         Settings.ElternErstellen(e);
     }
-    public  static Connection conn = null;
 
-    public static void connect() {
-        try {
-            // db parameters
-            String url = "jdbc:sqlite:C:\\Users\\Public\\YazılımMuh\\sqlite\\sqlite-tools\\kindergarten.db";
-            // create a connection to the database
-            conn = DriverManager.getConnection(url);
-
-            System.out.println("Connection to SQLite has been established.");
-            Statement stmt = conn.createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM users");
-            if(res.next()){
-                System.out.println("username: "+res.getString("username")+" Pass: "+res.getString("password"));
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
     public static void main(String[] args) {
         launch();
     }

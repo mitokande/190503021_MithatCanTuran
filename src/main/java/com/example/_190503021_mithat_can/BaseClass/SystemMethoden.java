@@ -1,5 +1,6 @@
 package com.example._190503021_mithat_can.BaseClass;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,7 +14,7 @@ public class SystemMethoden {
     private ArrayList<Lehrer> LehrerList= new ArrayList<>();
     private DB db = new DB();
     //AKTIVITAT
-    public  void AktivitatErstellen(Aktivitat aktivitat){
+    public  void AktivitatErstellen(Aktivitat aktivitat) {
         AktivitatList.add(aktivitat);
         db.SAVE(aktivitat);
     }

@@ -1,5 +1,6 @@
 package com.example._190503021_mithat_can;
 
+import com.example._190503021_mithat_can.BaseClass.DB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +28,7 @@ public class HelloController {
     @FXML
     protected void tryLogin(ActionEvent event) {
         try{
-        PreparedStatement stmt = Hydra.conn.prepareStatement("SELECT * FROM users WHERE username=? AND password=?");
+        PreparedStatement stmt = DB.conn.prepareStatement("SELECT * FROM users WHERE username=? AND password=?");
         stmt.setString(1,username.getText().toString());
         stmt.setString(2,password.getText().toString());
         ResultSet res = stmt.executeQuery();
