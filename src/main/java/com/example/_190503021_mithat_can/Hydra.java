@@ -5,7 +5,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.*;
 import java.util.Set;
@@ -17,6 +16,7 @@ public class Hydra extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hydra Kindergarten!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         DB.connect();
         //clastest();
