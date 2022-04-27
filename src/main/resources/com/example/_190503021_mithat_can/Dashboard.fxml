@@ -121,6 +121,7 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
+                        <VBox fx:id="list" layoutX="4.0" layoutY="71.0" prefHeight="432.0" prefWidth="431.0" />
                      </children>
                   </AnchorPane>
                </children></VBox>

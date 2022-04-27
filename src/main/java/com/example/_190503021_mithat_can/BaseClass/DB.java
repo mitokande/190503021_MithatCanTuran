@@ -37,13 +37,21 @@ public class DB {
         }
         return Sql;
     }
-    public static ArrayList<String> getusers(){
+    public static ArrayList<ArrayList<String>> getkinder(){
         try{
-            ResultSet set = stmt.executeQuery("SELECT * FROM users");
-            ArrayList<String> arr = new ArrayList<>();
+            ResultSet set = stmt.executeQuery("SELECT * FROM kinder");
+            ArrayList<ArrayList<String>> arr = new ArrayList<>();
+
             while(set.next()){
-                arr.add("Username: "+set.getString("username") + " Password:" + set.getString("password"));
+                ArrayList<String> name = new ArrayList<>();
+
+                name.add(set.getString("vorname") +" " + set.getString("nachname"));
+                name.add("Alter:"+set.getString("kind_alter") +" Klasse:" + set.getString("klasseId"));
+                //int a = set.getInt("kinderId");
+                name.add(set.getString("kinderId"));
+                arr.add(name);
             }
+
             return arr;
 
         }catch (SQLException e){
@@ -59,5 +67,10 @@ public class DB {
         catch (SQLException e){
 
         }
+    }
+    public static void deletekinder(int id){
+        try{
+            stmt.executeUpdate("DELETE FROM kinder WHERE kinderId="+id);
+        }catch (SQLException e){}
     }
 }
