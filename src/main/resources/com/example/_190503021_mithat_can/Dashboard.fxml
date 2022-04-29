@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,7 +32,7 @@
                      <children>
                         <AnchorPane>
                            <children>
-                              <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
+                              <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" onMouseClicked="#deneme" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
                                     <Image url="@../../../indir%20(2).png" />
                                  </image>
@@ -122,6 +123,11 @@
                            </font>
                         </Text>
                         <VBox fx:id="list" layoutX="4.0" layoutY="71.0" prefHeight="432.0" prefWidth="431.0" />
+                        <Button layoutX="383.0" layoutY="47.0" mnemonicParsing="false" onAction="#newkinder" style="-fx-background-color: #3c5550;" text="Yeni" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children></VBox>

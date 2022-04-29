@@ -41,14 +41,15 @@ public class DB {
         try{
             ResultSet set = stmt.executeQuery("SELECT * FROM kinder");
             ArrayList<ArrayList<String>> arr = new ArrayList<>();
-
+            int i = 0;
             while(set.next()){
                 ArrayList<String> name = new ArrayList<>();
 
                 name.add(set.getString("vorname") +" " + set.getString("nachname"));
                 name.add("Alter:"+set.getString("kind_alter") +" Klasse:" + set.getString("klasseId"));
                 //int a = set.getInt("kinderId");
-                name.add(set.getString("kinderId"));
+                name.add(Integer.toString(i));
+                i++;
                 arr.add(name);
             }
 

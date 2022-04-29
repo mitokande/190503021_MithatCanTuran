@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.*;
 
@@ -33,7 +34,8 @@ public class Kindercard {
         Scene scene = this.name.getScene();
         Node node = scene.lookup("list");
         VBox v = (VBox) scene.lookup("#list");
-        v.getChildren().remove(0);
+        AnchorPane a = (AnchorPane) this.name.getParent();
+        v.getChildren().remove(a);
         System.out.println(v.getChildren());
         //DashboardController.refreshkinder();
     }

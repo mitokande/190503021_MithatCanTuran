@@ -9,10 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxListCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 
@@ -54,17 +56,35 @@ public class DashboardController implements Initializable {
 //            list.appendText(l+"\n");
 //        }
 
-        for(ArrayList<String> s : liste){
+//        for(ArrayList<String> s : liste){
+//            FXMLLoader kindercard = new FXMLLoader(Hydra.class.getResource("kindercard.fxml"));
+//            list.getChildren().add(kindercard.load());
+//            Kindercard kindercardController = kindercard.getController();
+//            kindercardController.setdata(s);
+//        }
+        for (int i = 0;i<liste.size();i++ ){
             FXMLLoader kindercard = new FXMLLoader(Hydra.class.getResource("kindercard.fxml"));
             list.getChildren().add(kindercard.load());
             Kindercard kindercardController = kindercard.getController();
-            kindercardController.setdata(s);
-
-
+            kindercardController.setdata(liste.get(i));
         }
         list.setSpacing(12);
         System.out.println(liste);
 
 
     }
+    public void newkinder() throws IOException {
+        FXMLLoader kinderpopup = new FXMLLoader(Hydra.class.getResource("popup-add-kinder.fxml"));
+        Scene scene = new Scene(kinderpopup.load());
+        Stage stage = new Stage();
+        stage.setTitle("Add new kinder");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void deneme(MouseEvent event){
+        System.out.println("denenenene");
+    }
+
+
 }
