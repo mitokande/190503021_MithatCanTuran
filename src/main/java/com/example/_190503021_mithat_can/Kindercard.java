@@ -1,6 +1,5 @@
 package com.example._190503021_mithat_can;
 
-import com.example._190503021_mithat_can.BaseClass.DB;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -23,8 +22,11 @@ public class Kindercard {
     public ImageView icon;
 
     public void setdata(ArrayList<String> kinder){
-//        Image image = new Image(Hydra.class.getResourceAsStream("src/main/resources/img.jpeg"));
-//        icon.setImage(image);
+        System.out.println("1");
+        Image image = new Image(getClass().getResourceAsStream("img.jpeg"));
+        System.out.println("2");
+
+        icon.setImage(image);
         name.setText(kinder.get(0));
         desc.setText(kinder.get(1));
         id=Integer.parseInt(kinder.get(2));

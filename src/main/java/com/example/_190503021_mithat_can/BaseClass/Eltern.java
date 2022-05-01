@@ -5,6 +5,14 @@ public class Eltern extends Person{
     private String Telefonnummer;
     private String Email;
 
+    public Eltern(String _vorname, String _nachname, String _burgerid, int elternId, String telefonnummer, String email, String adresse) {
+        super(_vorname, _nachname, _burgerid);
+        ElternId = elternId;
+        Telefonnummer = telefonnummer;
+        Email = email;
+        Adresse = adresse;
+    }
+
     public int getElternId() {
         return ElternId;
     }
@@ -58,6 +66,6 @@ public class Eltern extends Person{
 
     @Override
     public String toString() {
-        return super.toString()+","+Telefonnummer + "," + Email +"," + Adresse + "," + Kinder;
+        return this.getVorname() + " " + this.getNachname();
     }
 }

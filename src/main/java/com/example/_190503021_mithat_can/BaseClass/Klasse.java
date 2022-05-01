@@ -4,10 +4,18 @@ import java.util.List;
 
 public class Klasse {
     private int KlasseId;
+    private String KlasseName;
     private List<Kinder> Studenten;
     private Lehrer Lehrer;
     private int KlassenGrosse;
 
+    public String getKlasseName() {
+        return KlasseName;
+    }
+
+    public void setKlasseName(String klasseName) {
+        KlasseName = klasseName;
+    }
     public Klasse(Lehrer _lehrer,int _grosse){
         this.Lehrer = _lehrer;
         this.KlassenGrosse = _grosse;
@@ -47,6 +55,6 @@ public class Klasse {
 
     @Override
     public String toString() {
-        return KlasseId + "," + Studenten + ","+Lehrer.getLehrerId()+","+KlassenGrosse;
+        return KlasseName + "("+KlassenGrosse+")";
     }
 }

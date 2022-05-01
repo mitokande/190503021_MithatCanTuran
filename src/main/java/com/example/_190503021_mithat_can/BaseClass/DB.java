@@ -60,7 +60,23 @@ public class DB {
         }
         return null;
     }
+    public static ArrayList<Eltern> geteltern(){
+        ArrayList<Eltern> elterns = new ArrayList<>();
+        String Sql = "SELECT * FROM eltern";
+        try{
+            ResultSet set = stmt.executeQuery(Sql);
+            while(set.next()){
+                elterns.add(new Eltern(set.getString("vorname"),
+                        set.getString("nachname"), set.getString("burgerId"),
+                        set.getInt("elternId"),set.getString("telefonnummer"),
+                        set.getString("email"),set.getString("adresse")));
+            }
+        }catch (SQLException e){
 
+        }
+        return elterns;
+
+    }
     public  static  void adddummyuser(){
         try{
             stmt.executeUpdate("INSERT INTO users VALUES('aptal','dummy')");

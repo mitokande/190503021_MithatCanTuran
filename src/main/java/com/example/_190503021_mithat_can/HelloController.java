@@ -34,11 +34,15 @@ public class HelloController {
         ResultSet res = stmt.executeQuery();
         if(res.next()){
             notif.setText("Login Başarılı");
+            System.out.println(Hydra.class.getResource("Dashboard.fxml"));
             FXMLLoader dashboardfxml = new FXMLLoader(Hydra.class.getResource("Dashboard.fxml"));
             Scene dashboardscene = new Scene(dashboardfxml.load());
+            System.out.println(dashboardscene);
+
             DashboardController dbcont = dashboardfxml.getController();
             dbcont.setUsername(username.getText().toString());
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            System.out.println(stage);
             stage.setScene(dashboardscene);
             stage.show();
 
