@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 
 public class DashboardController implements Initializable {
-
+    public static DashboardController dash;
     @FXML
     public Text welcome;
 
@@ -43,25 +43,19 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            dash = this;
             refreshkinder();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-    public void refreshkinder() throws IOException {
+    public  void refreshkinder() throws IOException {
         //list.setText("");
-        ArrayList<ArrayList<String>> liste = DB.getkinder();
-//        for(String l : liste){
-//            list.appendText(l+"\n");
-//        }
+        list.getChildren().clear();
 
-//        for(ArrayList<String> s : liste){
-//            FXMLLoader kindercard = new FXMLLoader(Hydra.class.getResource("kindercard.fxml"));
-//            list.getChildren().add(kindercard.load());
-//            Kindercard kindercardController = kindercard.getController();
-//            kindercardController.setdata(s);
-//        }
+        ArrayList<ArrayList<String>> liste = DB.getkinder();
+
         for (int i = 0;i<liste.size();i++ ){
             FXMLLoader kindercard = new FXMLLoader(Hydra.class.getResource("kindercard.fxml"));
             list.getChildren().add(kindercard.load());

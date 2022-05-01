@@ -122,8 +122,8 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <VBox fx:id="list" layoutX="4.0" layoutY="71.0" prefHeight="432.0" prefWidth="431.0" />
-                        <Button layoutX="383.0" layoutY="47.0" mnemonicParsing="false" onAction="#newkinder" style="-fx-background-color: #3c5550;" text="Yeni" textFill="WHITE">
+                        <VBox fx:id="list" layoutX="4.0" layoutY="86.0" prefHeight="417.0" prefWidth="431.0" />
+                        <Button layoutX="383.0" layoutY="33.0" mnemonicParsing="false" onAction="#newkinder" style="-fx-background-color: #3c5550;" text="Yeni" textFill="WHITE">
                            <font>
                               <Font size="13.0" />
                            </font>

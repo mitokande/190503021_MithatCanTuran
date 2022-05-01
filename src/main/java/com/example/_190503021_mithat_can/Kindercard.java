@@ -1,5 +1,6 @@
 package com.example._190503021_mithat_can;
 
+import com.example._190503021_mithat_can.BaseClass.DB;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -24,6 +25,10 @@ public class Kindercard {
     public void setdata(ArrayList<String> kinder){
         System.out.println("1");
         Image image = new Image(getClass().getResourceAsStream("img.jpeg"));
+
+        if(kinder.get(3) != null){
+            image = new Image(kinder.get(3));
+        }
         System.out.println("2");
 
         icon.setImage(image);
@@ -32,7 +37,7 @@ public class Kindercard {
         id=Integer.parseInt(kinder.get(2));
     }
     public void del() throws IOException {
-        //DB.deletekinder(id);
+        DB.deletekinder(id);
         Scene scene = this.name.getScene();
         Node node = scene.lookup("list");
         VBox v = (VBox) scene.lookup("#list");

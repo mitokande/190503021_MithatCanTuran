@@ -27,6 +27,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static com.example._190503021_mithat_can.DashboardController.dash;
+
 public class popup_add_kinder implements Initializable {
 
     @FXML
@@ -38,18 +40,27 @@ public class popup_add_kinder implements Initializable {
     @FXML
     public TextField alter;
     @FXML
-    public ChoiceBox klasse;
+    public TextField klasse;
     @FXML
     public ChoiceBox eltern;
     @FXML
     public ImageView ss;
+    @FXML
+    public TextField burgerId;
+
+
+
+    public String imagepath;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         populateareas();
     }
-    public void addkind() throws SQLException {
-
+    public void addkind() throws SQLException, IOException {
+        Eltern e = (Eltern) eltern.getSelectionModel().getSelectedItem();
+        DB.addkinder(vorname.getText(),nachname.getText(),burgerId.getText(),e.getElternId(),Integer.parseInt(klasse.getText()),Integer.parseInt(alter.getText()),imagepath);
+        System.out.println(vorname.getText()+nachname.getText()+burgerId.getText()+e.getElternId()+Integer.parseInt(klasse.getText())+Integer.parseInt(alter.getText()));
+        dash.refreshkinder();
     }
     public void populateareas(){
         ArrayList<Eltern> elterns = new ArrayList<>();
@@ -74,6 +85,7 @@ public class popup_add_kinder implements Initializable {
                     theDir.mkdirs();
                 }
                 ImageIO.write(bufferedImage, "png",new File(System.getProperty("user.home")+"/KinderGarten/"+file.getName().toString()));
+                imagepath = System.getProperty("user.home")+"/KinderGarten/"+file.getName().toString();
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }

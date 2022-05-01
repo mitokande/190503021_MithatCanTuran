@@ -2,6 +2,7 @@ package com.example._190503021_mithat_can.BaseClass;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class DB {
@@ -47,9 +48,10 @@ public class DB {
 
                 name.add(set.getString("vorname") +" " + set.getString("nachname"));
                 name.add("Alter:"+set.getString("kind_alter") +" Klasse:" + set.getString("klasseId"));
-                //int a = set.getInt("kinderId");
-                name.add(Integer.toString(i));
-                i++;
+                int a = set.getInt("kinderId");
+                name.add(Integer.toString(a));
+                name.add(set.getString("image"));
+
                 arr.add(name);
             }
 
@@ -89,5 +91,27 @@ public class DB {
         try{
             stmt.executeUpdate("DELETE FROM kinder WHERE kinderId="+id);
         }catch (SQLException e){}
+    }
+    public static void addkinder(String vorname,String nachname,String burgerId,int elternId,int klasseId,int alter,String image) {
+        try{
+            String sql = "INSERT INTO kinder (kinderId,vorname,nachname,burgerId,elternId,klasseId,kind_alter,image) VALUES(?,?,?,?,?,?,?,?) ";
+            System.out.println(sql);
+            Random r = new Random();
+            int id =r.nextInt(500000-10);
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,id);
+            ps.setString(2,vorname);
+            ps.setString(3,nachname);
+            ps.setString(4,burgerId);
+            ps.setInt(5,elternId);
+            ps.setInt(6,klasseId);
+            ps.setInt(7,alter);
+            ps.setString(8,image);
+
+            ps.executeUpdate();
+
+        }catch (SQLException e){
+
+        }
     }
 }
