@@ -79,6 +79,28 @@ public class DB {
         return elterns;
 
     }
+    public static ArrayList<Klasse> getClassrooms(){
+        try{
+            ResultSet set = stmt.executeQuery("SELECT * FROM klasse");
+            ArrayList<Klasse> arr = new ArrayList<>();
+            int i = 0;
+            while(set.next()){
+                ResultSet lehrerSet = stmt.executeQuery("SELECT * FROM lehrer WHERE id="+set.getInt("lehrerId"));
+                Lehrer lehrer = new Lehrer(lehrerSet.getInt("lehrerId"),lehrerSet.getString("vorname"),lehrerSet.getString("nachname"),lehrerSet.getString("burgerId"),lehrerSet.getString("benutzername"),lehrerSet.getString("passwort"),lehrerSet.getString("email"));
+                ArrayList<String> name = new ArrayList<>();
+
+                Klasse classroom = new Klasse(lehrer,set.getInt("klassengrose"));
+                lehrer.addKlasse(classroom);
+                arr.add(classroom);
+            }
+
+            return arr;
+
+        }catch (SQLException e){
+
+        }
+        return null;
+    }
     public  static  void adddummyuser(){
         try{
             stmt.executeUpdate("INSERT INTO users VALUES('aptal','dummy')");

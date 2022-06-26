@@ -21,14 +21,14 @@ public class Hydra extends Application {
         DB.connect();
         //clastest();
     }
-    public void clastest(){
-        SystemMethoden Settings = new SystemMethoden();
-        Klasse k = new Klasse(new Lehrer("mithat","turan","123123","mito","12312","a@g.com"),12);
-        Settings.ListKlasse();
-        Eltern e = new Eltern("Ali","Veli","1112223332");
-        Settings.KlasseErstellen(k);
-        Settings.ElternErstellen(e);
-    }
+//    public void clastest(){
+//        SystemMethoden Settings = new SystemMethoden();
+//        Klasse k = new Klasse(new Lehrer("mithat","turan","123123","mito","12312","a@g.com"),12);
+//        Settings.ListKlasse();
+//        Eltern e = new Eltern("Ali","Veli","1112223332");
+//        Settings.KlasseErstellen(k);
+//        Settings.ElternErstellen(e);
+//    }
 
     public static void main(String[] args) {
         launch();

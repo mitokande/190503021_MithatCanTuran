@@ -30,9 +30,9 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <AnchorPane>
+                        <AnchorPane fx:id="studentNAV" onMouseClicked="#Navigation">
                            <children>
-                              <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" onMouseClicked="#deneme" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
+                              <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
                                     <Image url="@../../../indir%20(2).png" />
                                  </image>
@@ -51,7 +51,7 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <AnchorPane>
+                        <AnchorPane fx:id="classroomNAV" onMouseClicked="#Navigation">
                            <children>
                               <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
@@ -72,7 +72,7 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <AnchorPane>
+                        <AnchorPane fx:id="teacherNAV" onMouseClicked="#Navigation">
                            <children>
                               <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
@@ -93,7 +93,7 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <AnchorPane>
+                        <AnchorPane fx:id="settingNAV" onMouseClicked="#Navigation">
                            <children>
                               <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
@@ -115,7 +115,7 @@
                </children></VBox>
             <VBox layoutX="200.0" prefHeight="480.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane prefHeight="553.0" prefWidth="440.0" style="-fx-background-color: #6c755b;">
+                  <AnchorPane onMouseClicked="#Navigation" prefHeight="553.0" prefWidth="440.0" style="-fx-background-color: #6c755b;">
                      <children>
                         <Text fill="WHITE" layoutX="116.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Öğrenciler" textAlignment="CENTER" wrappingWidth="207.73675537109375">
                            <font>

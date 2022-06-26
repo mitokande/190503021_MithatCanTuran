@@ -6,7 +6,7 @@ public class Lehrer extends Personal{
     private int LehrerId;
     private List<Klasse> Klasse;
 
-    public Lehrer(String _vorname, String _nachname, String _burgerid, String _bname, String _pass, String _email) {
+    public Lehrer(int id,String _vorname, String _nachname, String _burgerid, String _bname, String _pass, String _email) {
         super(_vorname, _nachname, _burgerid, _bname, _pass, _email);
     }
 
@@ -22,8 +22,8 @@ public class Lehrer extends Personal{
         return Klasse;
     }
 
-    public void setKlasse(List<Klasse> klasse) {
-        Klasse = klasse;
+    public void addKlasse(Klasse klasse) {
+        Klasse.add(klasse);
     }
 
     @Override
