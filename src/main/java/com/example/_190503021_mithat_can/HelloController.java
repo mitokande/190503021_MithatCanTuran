@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -25,6 +27,40 @@ public class HelloController {
     private TextField password;
     @FXML
     private Text notif;
+
+    public void keylogin(KeyEvent event){
+        if(event.getCode() == KeyCode.ENTER){
+            try{
+                PreparedStatement stmt = DB.conn.prepareStatement("SELECT * FROM users WHERE username=? AND password=?");
+                stmt.setString(1,username.getText().toString());
+                stmt.setString(2,password.getText().toString());
+                ResultSet res = stmt.executeQuery();
+                if(res.next()){
+                    notif.setText("Login Başarılı");
+                    System.out.println(Hydra.class.getResource("Dashboard.fxml"));
+                    FXMLLoader dashboardfxml = new FXMLLoader(Hydra.class.getResource("Dashboard.fxml"));
+                    Scene dashboardscene = new Scene(dashboardfxml.load());
+                    System.out.println(dashboardscene);
+
+                    DashboardController dbcont = dashboardfxml.getController();
+                    dbcont.setUsername(username.getText().toString());
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    System.out.println(stage);
+                    stage.setScene(dashboardscene);
+                    stage.show();
+
+
+                }else {
+                    notif.setText("Hatalı Login Bilgileri");
+                }
+
+            } catch (
+                    SQLException | IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
     @FXML
     protected void tryLogin(ActionEvent event) {
         try{

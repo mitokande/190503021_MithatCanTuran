@@ -23,7 +23,7 @@
             </Group>
             <Group layoutX="225.0" layoutY="213.0" AnchorPane.bottomAnchor="203.8" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="226.09219360351562" AnchorPane.topAnchor="200.0">
                <children>
-                  <TextField fx:id="password" style="-fx-background-color: #a6aa62;" translateY="10.0" />
+                  <TextField fx:id="password" onKeyPressed="#keylogin" style="-fx-background-color: #a6aa62;" translateY="10.0" />
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Şifre">
                      <font>
                         <Font size="13.0" />

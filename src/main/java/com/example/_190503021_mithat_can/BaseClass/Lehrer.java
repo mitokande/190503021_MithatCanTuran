@@ -1,13 +1,15 @@
 package com.example._190503021_mithat_can.BaseClass;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lehrer extends Personal{
     private int LehrerId;
-    private List<Klasse> Klasse;
+    private List<Klasse> Klasse = new ArrayList<>();
 
     public Lehrer(int id,String _vorname, String _nachname, String _burgerid, String _bname, String _pass, String _email) {
         super(_vorname, _nachname, _burgerid, _bname, _pass, _email);
+        this.LehrerId = id;
     }
 
     public int getLehrerId() {
@@ -28,6 +30,6 @@ public class Lehrer extends Personal{
 
     @Override
     public String toString() {
-        return super.toString()+","+LehrerId + ","+Klasse;
+        return this.getVorname() + " " + this.getNachname();
     }
 }

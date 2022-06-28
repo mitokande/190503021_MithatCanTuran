@@ -1,17 +1,29 @@
 package com.example._190503021_mithat_can.BaseClass;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Aktivitat {
     private int AktivitatId;
+    private String AktivitatName;
     private List<Kinder> Kinder;
     private int AktivitatGrosse;
-    private String AktivitatZeit;
+    private LocalDate aktivitatdatum;
 
-    public Aktivitat(int aktivitatId, int aktivitatGrosse) {
+    public Aktivitat(int aktivitatId, int aktivitatGrosse,LocalDate _aktivitatdatum) {
         AktivitatId = aktivitatId;
         AktivitatGrosse = aktivitatGrosse;
+        aktivitatdatum = _aktivitatdatum;
     }
+
+    public String getAktivitatName() {
+        return AktivitatName;
+    }
+
+    public void setAktivitatName(String aktivitatName) {
+        AktivitatName = aktivitatName;
+    }
+
     public void AddKinder(Kinder _kinder){
         Kinder.add(_kinder);
     }
@@ -43,16 +55,16 @@ public class Aktivitat {
         AktivitatGrosse = aktivitatGrosse;
     }
 
-    public String getAktivitatZeit() {
-        return AktivitatZeit;
+    public LocalDate getAktivitatdatum() {
+        return aktivitatdatum;
     }
 
-    public void setAktivitatZeit(String aktivitatZeit) {
-        AktivitatZeit = aktivitatZeit;
+    public void setAktivitatdatum(LocalDate aktivitatdatum) {
+        this.aktivitatdatum = aktivitatdatum;
     }
 
     @Override
     public String toString() {
-        return AktivitatId +"," + Kinder +"," + AktivitatGrosse +"," + AktivitatZeit ;
+        return AktivitatId +"," + Kinder +"," + AktivitatGrosse +"," + aktivitatdatum ;
     }
 }

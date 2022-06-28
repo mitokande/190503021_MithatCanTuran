@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._190503021_mithat_can.DashboardController">
+<HBox prefHeight="611.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._190503021_mithat_can.DashboardController">
    <children>
-      <AnchorPane prefHeight="480.0" prefWidth="640.0">
+      <AnchorPane prefHeight="582.0" prefWidth="640.0">
          <children>
-            <VBox prefHeight="480.0" prefWidth="200.0" style="-fx-background-color: #3c5550;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="440.0">
+            <VBox prefHeight="611.0" prefWidth="228.0" style="-fx-background-color: #3c5550;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="532.0">
                <children>
                   <VBox>
                      <children>
@@ -34,10 +34,10 @@
                            <children>
                               <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
-                                    <Image url="@../../../indir%20(2).png" />
+                                    <Image url="@student.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Öğrenciler" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="0.0">
+                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kinder" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="20.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -55,10 +55,10 @@
                            <children>
                               <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
-                                    <Image url="@../../../indir%20(1).png" />
+                                    <Image url="@board.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sınıflar" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="0.0">
+                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Klassenraum" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="20.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -76,10 +76,10 @@
                            <children>
                               <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
-                                    <Image url="@../../../istockphoto-920399644-1024x1024.jpg" />
+                                    <Image url="@teacher.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Öğretmenler" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="0.0">
+                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrerinnen" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="20.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -93,14 +93,14 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <AnchorPane fx:id="settingNAV" onMouseClicked="#Navigation">
+                        <AnchorPane fx:id="aktivitatNAV" onMouseClicked="#Navigation">
                            <children>
                               <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                                  <image>
-                                    <Image url="@../../../setting-icon-design-sign-gear-isolated-sign-free-free-vector.jpg" />
+                                    <Image url="@kite.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ayarlar" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="0.0">
+                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aktivität" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="20.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -112,18 +112,41 @@
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
                   </VBox>
-               </children></VBox>
-            <VBox layoutX="200.0" prefHeight="480.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane onMouseClicked="#Navigation" prefHeight="553.0" prefWidth="440.0" style="-fx-background-color: #6c755b;">
+                  <VBox layoutX="10.0" layoutY="413.0">
                      <children>
-                        <Text fill="WHITE" layoutX="116.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Öğrenciler" textAlignment="CENTER" wrappingWidth="207.73675537109375">
+                        <AnchorPane fx:id="settingNAV1" onMouseClicked="#Navigation">
+                           <children>
+                              <ImageView fitHeight="107.0" fitWidth="99.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
+                                 <image>
+                                    <Image url="@Settings.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Einstellungen" wrappingWidth="88.5367431640625" AnchorPane.rightAnchor="20.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children></VBox>
+            <VBox layoutX="224.0" prefHeight="611.0" prefWidth="536.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane onMouseClicked="#Navigation" prefHeight="660.0" prefWidth="536.0" style="-fx-background-color: #6c755b;">
+                     <children>
+                        <Text fx:id="title" fill="WHITE" layoutX="161.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kinder" textAlignment="CENTER" wrappingWidth="207.73675537109375">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <VBox fx:id="list" layoutX="4.0" layoutY="86.0" prefHeight="417.0" prefWidth="431.0" />
-                        <Button layoutX="383.0" layoutY="33.0" mnemonicParsing="false" onAction="#newkinder" style="-fx-background-color: #3c5550;" text="Yeni" textFill="WHITE">
+                        <VBox fx:id="list" layoutX="4.0" layoutY="86.0" prefHeight="518.0" prefWidth="521.0" />
+                        <Button layoutX="479.0" layoutY="33.0" mnemonicParsing="false" onAction="#popup" style="-fx-background-color: #3c5550;" text="Neu" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="14.0" layoutY="33.0" mnemonicParsing="false" onAction="#elternAdd" style="-fx-background-color: #3c5550;" text="Neu Eltern" textFill="WHITE">
                            <font>
                               <Font size="13.0" />
                            </font>

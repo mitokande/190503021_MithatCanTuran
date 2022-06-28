@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -11,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="439.0" prefWidth="600.0" style="-fx-background-color: #3c5550;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._190503021_mithat_can.popup_add_kinder">
+<AnchorPane prefHeight="439.0" prefWidth="600.0" style="-fx-background-color: #3c5550;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._190503021_mithat_can.PopupDetailsLehrer">
    <children>
-      <Label layoutX="227.0" layoutY="23.0" text="Add new Student" textFill="WHITE" AnchorPane.leftAnchor="227.00000000000003" AnchorPane.rightAnchor="227.4" AnchorPane.topAnchor="23.0">
+      <Label layoutX="227.0" layoutY="23.0" text="Add new Teacher" textFill="WHITE" AnchorPane.leftAnchor="227.00000000000003" AnchorPane.rightAnchor="227.4" AnchorPane.topAnchor="23.0">
          <font>
             <Font size="19.0" />
          </font>
@@ -29,7 +28,7 @@
                   </Label>
                   <TextField fx:id="vorname" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="150.0">
                      <HBox.margin>
-                        <Insets left="15.0" />
+                        <Insets left="80.0" />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -43,21 +42,7 @@
                   </Label>
                   <TextField fx:id="nachname" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="150.0">
                      <HBox.margin>
-                        <Insets left="2.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label text="Alter" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="alter" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="150.0">
-                     <HBox.margin>
-                        <Insets left="66.0" />
+                        <Insets left="70.0" />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -68,29 +53,48 @@
                      <font>
                         <Font size="24.0" />
                      </font>
-                     <padding>
-                        <Insets right="25.0" />
-                     </padding>
                   </Label>
-                  <TextField fx:id="burgerId" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="150.0" />
+                  <TextField fx:id="burgerId" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="90.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="104.0">
+               <children>
+                  <Label text="BenutzerName" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="benutzername" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </TextField>
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Label text="Eltern" textFill="WHITE">
+                  <Label text="Passwort" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <padding>
-                        <Insets right="55.0" />
+                        <Insets right="25.0" />
                      </padding>
                   </Label>
-                  <ChoiceBox fx:id="eltern" prefHeight="35.0" prefWidth="150.0" />
+                  <TextField fx:id="passwort" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </TextField>
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Label text="Klasse" textFill="WHITE">
+                  <Label text="Email" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -98,13 +102,16 @@
                         <Insets right="50.0" />
                      </padding>
                   </Label>
-                  <ChoiceBox fx:id="klasse" prefHeight="35.0" prefWidth="150.0" />
+                  <TextField fx:id="email" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="75.0" />
+                     </HBox.margin>
+                  </TextField>
                </children>
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="274.0" layoutY="326.0" mnemonicParsing="false" onAction="#addkind" text="Save" AnchorPane.bottomAnchor="40.0" />
-      <Button layoutX="181.0" layoutY="373.0" mnemonicParsing="false" onAction="#addimage" text="Resim Ekle" AnchorPane.bottomAnchor="40.4" />
+      <Button layoutX="274.0" layoutY="326.0" mnemonicParsing="false" onAction="#addlehrer" text="Save" AnchorPane.bottomAnchor="40.0" />
       <ImageView fx:id="ss" fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

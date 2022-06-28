@@ -6,7 +6,7 @@ public class Klasse {
     private int KlasseId;
     private String KlasseName;
     private List<Kinder> Studenten;
-    private Lehrer Lehrer;
+    private int lehrerId;
     private int KlassenGrosse;
 
     public String getKlasseName() {
@@ -16,8 +16,8 @@ public class Klasse {
     public void setKlasseName(String klasseName) {
         KlasseName = klasseName;
     }
-    public Klasse(Lehrer _lehrer,int _grosse){
-        this.Lehrer = _lehrer;
+    public Klasse(int _lehrer,int _grosse){
+        this.lehrerId = _lehrer;
         this.KlassenGrosse = _grosse;
     }
 
@@ -37,12 +37,12 @@ public class Klasse {
         Studenten = studenten;
     }
 
-    public Lehrer getLehrer() {
-        return Lehrer;
+    public int getLehrerId() {
+        return lehrerId;
     }
 
-    public void setLehrer(Lehrer lehrer) {
-        Lehrer = lehrer;
+    public void setLehrerId(int lehrerId) {
+        this.lehrerId = lehrerId;
     }
 
     public int getKlassenGrosse() {
