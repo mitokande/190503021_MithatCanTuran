@@ -48,6 +48,8 @@ public class Kindercard {
             DB.deleteLehrer(id);
         }else if(type == "aktivitat"){
             DB.deleteAktivitat(id);
+        }else if(type == "eltern"){
+            DB.deleteEltern(id);
         }
         Scene scene = this.name.getScene();
         Node node = scene.lookup("list");
@@ -134,5 +136,33 @@ public class Kindercard {
             stage.setScene(scene);
             stage.show();
         }
+        if(type=="eltern"){
+            FXMLLoader detailspopup = new FXMLLoader(Hydra.class.getResource("popup-details-eltern.fxml"));
+            Scene scene = new Scene(detailspopup.load());
+            Stage stage = new Stage();
+            PopupDetailsEltern popupDetailsEltern = detailspopup.getController();
+            Eltern eltern = DB.getElternSingle(id);
+            popupDetailsEltern.setData(eltern);
+            stage.setTitle("Eltern Details");
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+    public void setdata(Eltern eltern) {
+        type = "eltern";
+        Image image = new Image(getClass().getResourceAsStream("teacher.png"));
+        icon.setImage(image);
+        name.setText(eltern.getVorname() + " " + eltern.getNachname());
+        ArrayList<Kinder> kinders = DB.getkinder();
+        String s ="Çocukları: ";
+        for(Kinder k : kinders){
+            if(k.getEltern().getElternId()==eltern.getElternId()){
+                s += k.getVorname() + " " + k.getNachname()+" | ";
+            }
+        }
+        desc.setText(s);
+
+        id=eltern.getElternId();
     }
 }

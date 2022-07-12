@@ -42,7 +42,8 @@ public class PopupAddKlasse implements Initializable{
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
-        dash.refreshTeacher();
+        dash.refreshClassroom();
+        dash.populateFilter();
     }
 
 

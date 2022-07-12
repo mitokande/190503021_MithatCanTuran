@@ -47,10 +47,13 @@ public class PopupAddEltern {
     public void addEltern(ActionEvent event) throws IOException{
         Eltern eltern = new Eltern(vorname.getText(),nachname.getText(),burgerId.getText(),0,telefonnummer.getText(),email.getText(),adresse.getText());
         DB.addEltern(eltern);
+        System.out.println(eltern);
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
-        dash.refreshTeacher();
+        dash.refreshKinder(null);
+        dash.populateFilter();
+        popup_add_kinder.popupAddKinder.populateareas();
     }
 
 }

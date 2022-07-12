@@ -1,77 +1,68 @@
 package com.example._190503021_mithat_can.BaseClass;
 
 public class Zahlung {
-    private int ZahlungID;
-    private Personal ZahlungPersonal;
-    private String ZahlungsArt;
-    private String KartInformation;
-    private Kinder Kinder;
-    private Eltern Eltern;
-    private int ZahlungPreis;
+    private int zahlungId;
+    private int personalId;
+    private int elternId;
+    private int kinderId;
+    private int gesamtesumme;
+    private int gezahlterBetrag;
 
-    public Zahlung(Kinder _kind,int _preis,String _kart){
-        this.Kinder = _kind;
-        this.ZahlungPreis = _preis;
-        this.KartInformation = _kart;
-    }
-    public int getZahlungID() {
-        return ZahlungID;
-    }
-
-    public void setZahlungID(int zahlungID) {
-        ZahlungID = zahlungID;
+    public Zahlung(int zahlungId, int personalId, int elternId, int kinderId, int gesamtesumme, int gezahlterBetrag) {
+        this.zahlungId = zahlungId;
+        this.personalId = personalId;
+        this.elternId = elternId;
+        this.kinderId = kinderId;
+        this.gesamtesumme = gesamtesumme;
+        this.gezahlterBetrag = gezahlterBetrag;
     }
 
-    public Personal getZahlungPersonal() {
-        return ZahlungPersonal;
+    public int getZahlungId() {
+        return zahlungId;
     }
 
-    public void setZahlungPersonal(Personal zahlungPersonal) {
-        ZahlungPersonal = zahlungPersonal;
+    public void setZahlungId(int zahlungId) {
+        this.zahlungId = zahlungId;
     }
 
-    public String getZahlungsArt() {
-        return ZahlungsArt;
+    public int getPersonalId() {
+        return personalId;
     }
 
-    public void setZahlungsArt(String zahlungsArt) {
-        ZahlungsArt = zahlungsArt;
+    public void setPersonalId(int personalId) {
+        this.personalId = personalId;
     }
 
-    public String getKartInformation() {
-        return KartInformation;
+    public int getElternId() {
+        return elternId;
     }
 
-    public void setKartInformation(String kartInformation) {
-        KartInformation = kartInformation;
+    public void setElternId(int elternId) {
+        this.elternId = elternId;
     }
 
-    public Kinder getKinder() {
-        return Kinder;
+    public int getKinderId() {
+        return kinderId;
     }
 
-    public void setKinder(Kinder kinder) {
-        Kinder = kinder;
+    public void setKinderId(int kinderId) {
+        this.kinderId = kinderId;
     }
 
-    public Eltern getEltern() {
-        return Eltern;
+    public int getGesamtesumme() {
+        return gesamtesumme;
     }
 
-    public void setEltern(Eltern eltern) {
-        Eltern = eltern;
+    public void setGesamtesumme(int gesamtesumme) {
+        this.gesamtesumme = gesamtesumme;
     }
 
-    public int getZahlungPreis() {
-        return ZahlungPreis;
+    public int getGezahlterBetrag() {
+        return gezahlterBetrag;
     }
 
-    public void setZahlungPreis(int zahlungPreis) {
-        ZahlungPreis = zahlungPreis;
+    public void setGezahlterBetrag(int gezahlterBetrag) {
+        this.gezahlterBetrag = gezahlterBetrag;
     }
 
-    @Override
-    public String toString() {
-        return ZahlungID +","+ ZahlungPersonal +"," + ZahlungsArt  +"," + KartInformation + "," + Kinder +"," + Eltern +"," + ZahlungPreis;
-    }
 }

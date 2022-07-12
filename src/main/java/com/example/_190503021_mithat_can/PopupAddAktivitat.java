@@ -46,6 +46,7 @@ public class PopupAddAktivitat implements Initializable{
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         dash.refreshAktivitat();
+        dash.populateFilter();
     }
 
     @Override

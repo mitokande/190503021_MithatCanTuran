@@ -1,6 +1,7 @@
 package com.example._190503021_mithat_can;
 
 import com.example._190503021_mithat_can.BaseClass.DB;
+import com.example._190503021_mithat_can.BaseClass.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class HelloController {
+
+    public static User user = new User();
     @FXML
     private TextField username;
     @FXML
@@ -31,7 +34,7 @@ public class HelloController {
     public void keylogin(KeyEvent event){
         if(event.getCode() == KeyCode.ENTER){
             try{
-                PreparedStatement stmt = DB.conn.prepareStatement("SELECT * FROM users WHERE username=? AND password=?");
+                PreparedStatement stmt = DB.conn.prepareStatement("SELECT * FROM lehrer WHERE benutzername=? AND passwort=?");
                 stmt.setString(1,username.getText().toString());
                 stmt.setString(2,password.getText().toString());
                 ResultSet res = stmt.executeQuery();
@@ -41,9 +44,11 @@ public class HelloController {
                     FXMLLoader dashboardfxml = new FXMLLoader(Hydra.class.getResource("Dashboard.fxml"));
                     Scene dashboardscene = new Scene(dashboardfxml.load());
                     System.out.println(dashboardscene);
-
+                    user.username = username.getText();
+                    user.password = password.getText();
+                    user.LehrerId = res.getInt("lehrerId");
                     DashboardController dbcont = dashboardfxml.getController();
-                    dbcont.setUsername(username.getText().toString());
+                    dbcont.setUsername(res.getString("vorname"));
                     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     System.out.println(stage);
                     stage.setScene(dashboardscene);
@@ -64,23 +69,23 @@ public class HelloController {
     @FXML
     protected void tryLogin(ActionEvent event) {
         try{
-        PreparedStatement stmt = DB.conn.prepareStatement("SELECT * FROM users WHERE username=? AND password=?");
-        stmt.setString(1,username.getText().toString());
-        stmt.setString(2,password.getText().toString());
-        ResultSet res = stmt.executeQuery();
-        if(res.next()){
-            notif.setText("Login Başarılı");
-            System.out.println(Hydra.class.getResource("Dashboard.fxml"));
-            FXMLLoader dashboardfxml = new FXMLLoader(Hydra.class.getResource("Dashboard.fxml"));
-            Scene dashboardscene = new Scene(dashboardfxml.load());
-            System.out.println(dashboardscene);
+            PreparedStatement stmt = DB.conn.prepareStatement("SELECT * FROM lehrer WHERE benutzername=? AND passwort=?");
+            stmt.setString(1,username.getText().toString());
+            stmt.setString(2,password.getText().toString());
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                notif.setText("Login Başarılı");
+                System.out.println(Hydra.class.getResource("Dashboard.fxml"));
+                FXMLLoader dashboardfxml = new FXMLLoader(Hydra.class.getResource("Dashboard.fxml"));
+                Scene dashboardscene = new Scene(dashboardfxml.load());
+                System.out.println(dashboardscene);
 
-            DashboardController dbcont = dashboardfxml.getController();
-            dbcont.setUsername(username.getText().toString());
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            System.out.println(stage);
-            stage.setScene(dashboardscene);
-            stage.show();
+                DashboardController dbcont = dashboardfxml.getController();
+                dbcont.setUsername(res.getString("vorname"));
+                Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                System.out.println(stage);
+                stage.setScene(dashboardscene);
+                stage.show();
 
 
         }else {

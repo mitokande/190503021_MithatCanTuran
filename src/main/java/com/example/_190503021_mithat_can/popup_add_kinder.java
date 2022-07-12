@@ -5,7 +5,9 @@ import com.example._190503021_mithat_can.BaseClass.Eltern;
 import com.example._190503021_mithat_can.BaseClass.Kinder;
 import com.example._190503021_mithat_can.BaseClass.Klasse;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -27,6 +29,8 @@ import java.util.ResourceBundle;
 import static com.example._190503021_mithat_can.DashboardController.dash;
 
 public class popup_add_kinder implements Initializable {
+
+    public static popup_add_kinder popupAddKinder;
 
     @FXML
     public VBox vb;
@@ -52,6 +56,7 @@ public class popup_add_kinder implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         populateareas();
+        popupAddKinder = this;
     }
     public void addkind() throws  IOException {
         Eltern e = (Eltern) eltern.getSelectionModel().getSelectedItem();
@@ -60,9 +65,12 @@ public class popup_add_kinder implements Initializable {
         kinder.setImage(imagepath);
         kinder.setKind_alter(Integer.parseInt(alter.getText()));
         DB.addkinder(kinder);
-        dash.refreshKinder();
+        dash.refreshKinder(null);
+        dash.populateFilter();
     }
     public void populateareas(){
+        eltern.getItems().clear();
+        klasse.getItems().clear();
         ArrayList<Eltern> elterns = new ArrayList<>();
         elterns = DB.geteltern();
         for(Eltern e : elterns){
@@ -74,6 +82,15 @@ public class popup_add_kinder implements Initializable {
         for (Klasse k : klasses){
             klasse.getItems().add(k);
         }
+    }
+    public void elternAdd() throws IOException {
+        FXMLLoader elternpopup = new FXMLLoader(Hydra.class.getResource("popup-add-eltern.fxml"));
+        Scene scene = new Scene(elternpopup.load());
+        Stage stage = new Stage();
+        stage.setTitle("Neue Eltern");
+        stage.setScene(scene);
+        stage.show();
+
     }
     public void addimage(){
         FileChooser fileChooser = new FileChooser();

@@ -50,6 +50,7 @@ public class PopupAddLehrer {
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         dash.refreshTeacher();
+        dash.populateFilter();
     }
 
 }

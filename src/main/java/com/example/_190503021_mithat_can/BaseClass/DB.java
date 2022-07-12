@@ -42,20 +42,20 @@ public class DB {
         }
         return Sql;
     }
-    //------------------------------------------------
+
+
+    //region GetEntities
     public static ArrayList<Kinder> getkinder(){
         ArrayList<Kinder> arr = new ArrayList<>();
         try{
-            ResultSet set = stmt.executeQuery("SELECT * FROM kinder,eltern WHERE eltern.elternId = kinder.elternId");
+            ResultSet set = stmt.executeQuery("SELECT * FROM kinder");
 
             int i = 0;
             while(set.next()){
 
-                Eltern eltern = null;
-                eltern = new Eltern(set.getString(10),set.getString(11),set.getString("burgerid"),set.getInt("elternId"),set.getString("telefonnummer"),set.getString("email"),set.getString("adresse"));
+                Eltern e = new Eltern("Kein","Eltern","",0,"","","");
 
-
-                Kinder kind = new Kinder(set.getString("vorname"),set.getString("nachname"),set.getString("burgerid"),eltern,set.getInt("klasseId"));
+                Kinder kind = new Kinder(set.getString("vorname"),set.getString("nachname"),set.getString("burgerid"),e,set.getInt("klasseId"));
                 kind.setKind_alter(set.getInt("kind_alter"));
 
                 kind.setKinderId(set.getInt("kinderId"));
@@ -65,10 +65,18 @@ public class DB {
                 arr.add(kind);
             }
 
+            for(Kinder k : arr){
+
+                ResultSet kinderSet = stmt.executeQuery("SELECT * FROM eltern,kinder WHERE eltern.elternId=kinder.elternId AND kinderId="+k.getKinderId());
+                while (kinderSet.next()){
+                    k.setEltern(DB.getElternSingle(kinderSet.getInt("elternId")));
+                }
+                System.out.println(k.getEltern());
+            }
             return arr;
 
         }catch (SQLException e){
-            System.out.println(e.getMessage());
+            System.out.println("getkind"+e.getMessage());
         }
         return arr;
     }
@@ -158,7 +166,25 @@ public class DB {
         }
         return null;
     }
-    //------------------------------------------------
+    public static ArrayList<Zahlung> getZahlungen(){
+        ArrayList<Zahlung> zahlungs = new ArrayList<>();
+        try{
+            ResultSet set = stmt.executeQuery("SELECT * FROM zahlung");
+            while (set.next()){
+                Zahlung zahlung = new Zahlung(
+                        set.getInt("zahlungId"), set.getInt("personalId"),
+                        set.getInt("elternId"), set.getInt("kinderId"),
+                        set.getInt("gesamtesumme"), set.getInt("gezahlterBetrag"));
+                zahlungs.add(zahlung);
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return  zahlungs;
+    }
+    //endregion
+
+    //region GetSingleEntity
     public static Lehrer getLehrerSingle(int Id) {
         try{
             ResultSet set = stmt.executeQuery("SELECT  * FROM lehrer WHERE lehrerId="+Id);
@@ -231,7 +257,24 @@ public class DB {
         }
         return null;
     }
-    //------------------------------------------------
+    public static Zahlung getZahlungSingle(int id){
+        try{
+            ResultSet set = stmt.executeQuery("SELECT * FROM zahlung WHERE zahlungId="+id);
+            if(set.next()){
+                Zahlung zahlung = new Zahlung(
+                        set.getInt("zahlungId"), set.getInt("personalId"),
+                        set.getInt("elternId"), set.getInt("kinderId"),
+                        set.getInt("gesamtesumme"), set.getInt("gezahlterBetrag"));
+                return zahlung;
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    //endregion
+
+    //region SaveSignleEntity
     public static void saveAktivitat(Aktivitat aktivitat){
         try{
             String sql = "UPDATE aktivitat SET aktivitatname=?,aktivitatgrosse=?,aktivitatdatum=? WHERE aktivitatId="+aktivitat.getAktivitatId();
@@ -290,7 +333,24 @@ public class DB {
             System.out.println(e.getMessage());
         }
     }
-    //------------------------------------------------
+    public static void saveEltern(Eltern eltern){
+        try{
+            PreparedStatement ps = conn.prepareStatement("UPDATE eltern SET vorname=?,nachname=?,burgerId=?,telefonnummer=?,email=?,adresse=? WHERE elternId=?");
+            ps.setString(1,eltern.getVorname());
+            ps.setString(2,eltern.getNachname());
+            ps.setString(3, eltern.getBurgerId());
+            ps.setString(4, eltern.getTelefonnummer());
+            ps.setString(5, eltern.getEmail());
+            ps.setString(6,eltern.getAdresse());
+            ps.setInt(7,eltern.getElternId());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    //endregion
+
+    //region AddNewEntity
     public static void addkinder(Kinder kinder) {
         try{
             String sql = "INSERT INTO kinder (vorname,nachname,burgerId,elternId,klasseId,kind_alter,image) VALUES(?,?,?,?,?,?,?) ";
@@ -370,7 +430,40 @@ public class DB {
             System.out.println(e.getMessage());
         }
     }
-    //------------------------------------------------
+    public static void AddZahlung(Zahlung zahlung){
+        try{
+            String sql = "INSERT INTO zahlung (elternId,kinderId,personalId,gesamtesumme,gezahlterBetrag) VALUES (?,?,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,zahlung.getElternId());
+            ps.setInt(2,zahlung.getKinderId());
+            ps.setInt(3,zahlung.getPersonalId());
+            ps.setInt(4,zahlung.getGesamtesumme());
+            ps.setInt(5,zahlung.getGezahlterBetrag());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void AddBezahlung(Bezahlung bezahlung){
+        try{
+            String sql="INSERT INTO bezahlung (zahlungId,betrag,datum) VALUES (?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,bezahlung.getBezahlungId());
+            ps.setInt(2,bezahlung.getBetrag());
+            ps.setDate(3,Date.valueOf(bezahlung.getDatum()));
+            ps.executeUpdate();
+            sql = "UPDATE zahlung SET gezahlterBetrag=gezahlterBetrag+? WHERE zahlungId=?";
+            PreparedStatement psZ = conn.prepareStatement(sql);
+            psZ.setInt(1,bezahlung.getBetrag());
+            psZ.setInt(2,bezahlung.getZahlungId());
+            psZ.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    //endregion
+
+    //region DeleteEntity
     public static void deleteKinder(int id){
         try{
             stmt.executeUpdate("DELETE FROM kinder WHERE kinderId="+id);
@@ -394,7 +487,15 @@ public class DB {
             System.out.println(e.getMessage());
         }
     }
-    //------------------------------------------------
+    public static void deleteEltern(int id){
+        try{
+            stmt.executeUpdate("DELETE FROM eltern WHERE elternId="+id);
+            stmt.executeUpdate("UPDATE kinder SET elternId=NULL WHERE elternId="+id);
+        }catch (SQLException e){}
+    }
+    //endregion
+
+    //region AktivitatBehavivors
     public static ArrayList<Kinder> getKinderVomAktivitat(Aktivitat aktivitat){
         try{
             ResultSet set = stmt.executeQuery("SELECT * FROM aktivitat_kinder WHERE aktivitatId="+aktivitat.getAktivitatId());
@@ -451,7 +552,9 @@ public class DB {
             System.out.println(e.getMessage());
         }
     }
-    //------------------------------------------------
+    //endregion
+
+    //region KlasseBehaivors
     public static ArrayList<Kinder> getKinderVomKlasse(Klasse klasse){
         ArrayList<Kinder> arr = new ArrayList<>();
         try{
@@ -497,5 +600,21 @@ public class DB {
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
+    }
+    //endregion
+
+    public static ArrayList<Bezahlung> getBezahlungVomZahlung(int zahlungId){
+        ArrayList<Bezahlung> bezahlungs = new ArrayList<>();
+        try {
+            ResultSet set = stmt.executeQuery("SELECT * FROM bezahlung WHERE zahlungId="+zahlungId);
+            while (set.next()){
+                Bezahlung bezahlung = new Bezahlung(set.getInt("bezahlungId"),set.getInt("zahlungId"),set.getInt("betrag"),set.getDate("datum").toLocalDate());
+                bezahlungs.add(bezahlung);
+            }
+            return bezahlungs;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return bezahlungs;
     }
 }

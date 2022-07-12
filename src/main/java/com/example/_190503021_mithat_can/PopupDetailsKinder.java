@@ -88,7 +88,7 @@ public class PopupDetailsKinder implements Initializable{
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
-        dash.refreshKinder();
+        dash.refreshKinder(null);
     }
 
     @Override
