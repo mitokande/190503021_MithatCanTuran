@@ -1,9 +1,6 @@
 package com.example._190503021_mithat_can;
 
-import com.example._190503021_mithat_can.BaseClass.DB;
-import com.example._190503021_mithat_can.BaseClass.Eltern;
-import com.example._190503021_mithat_can.BaseClass.Kinder;
-import com.example._190503021_mithat_can.BaseClass.Klasse;
+import com.example._190503021_mithat_can.BaseClass.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -64,7 +61,10 @@ public class popup_add_kinder implements Initializable {
         Kinder kinder = new Kinder(vorname.getText(),nachname.getText(),burgerId.getText(),e,k.getKlasseId());
         kinder.setImage(imagepath);
         kinder.setKind_alter(Integer.parseInt(alter.getText()));
-        DB.addkinder(kinder);
+        int id =DB.addkinder(kinder);
+
+        Zahlung zahlung = new Zahlung(0,HelloController.user.LehrerId,e.getElternId(), id,10000,0);
+        DB.AddZahlung(zahlung);
         dash.refreshKinder(null);
         dash.populateFilter();
     }

@@ -3,20 +3,21 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="439.0" prefWidth="600.0" style="-fx-background-color: #3c5550;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._190503021_mithat_can.PopupDetailsEltern">
+<AnchorPane prefHeight="439.0" prefWidth="661.0" style="-fx-background-color: #3c5550;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._190503021_mithat_can.PopupDetailsEltern">
    <children>
       <Label layoutX="227.0" layoutY="23.0" text="Elterndetails" textFill="WHITE" AnchorPane.leftAnchor="227.00000000000003" AnchorPane.rightAnchor="227.4" AnchorPane.topAnchor="23.0">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <VBox fx:id="vb" layoutX="56.0" layoutY="86.0" prefHeight="214.0" prefWidth="500.0" spacing="12.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="86.0">
+      <VBox fx:id="vb" layoutX="33.0" layoutY="84.0" prefHeight="271.0" prefWidth="389.0" spacing="12.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="178.0" AnchorPane.topAnchor="84.0">
          <children>
             <HBox>
                <children>
@@ -113,5 +114,10 @@
          </children>
       </VBox>
       <Button layoutX="279.0" layoutY="373.0" mnemonicParsing="false" onAction="#update" text="Save" AnchorPane.bottomAnchor="40.39999999999998" />
+      <ScrollPane fx:id="scrollbarOfZahlung" fitToWidth="true" layoutX="422.0" layoutY="51.0" prefHeight="374.0" prefWidth="218.0">
+         <content>
+            <VBox fx:id="vboxZahlung" prefHeight="346.0" prefWidth="166.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

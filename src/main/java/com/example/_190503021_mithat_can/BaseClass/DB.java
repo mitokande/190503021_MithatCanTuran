@@ -27,9 +27,6 @@ public class DB {
             System.out.println(e.getMessage());
         }
     }
-
-
-
     public String SAVE(Object obj) {
         String Sql = "Insert Into " + obj.getClass().getSimpleName() + " values(" + obj.toString()+ ")";
         //Buraya Sql komutları gelecek
@@ -42,7 +39,6 @@ public class DB {
         }
         return Sql;
     }
-
 
     //region GetEntities
     public static ArrayList<Kinder> getkinder(){
@@ -351,13 +347,11 @@ public class DB {
     //endregion
 
     //region AddNewEntity
-    public static void addkinder(Kinder kinder) {
+    public static int addkinder(Kinder kinder) {
         try{
             String sql = "INSERT INTO kinder (vorname,nachname,burgerId,elternId,klasseId,kind_alter,image) VALUES(?,?,?,?,?,?,?) ";
             System.out.println(sql);
-            Random r = new Random();
-            int id =r.nextInt(500000-10);
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,kinder.getVorname());
             ps.setString(2,kinder.getNachname());
             ps.setString(3,kinder.getBurgerId());
@@ -365,12 +359,15 @@ public class DB {
             ps.setInt(5,kinder.getKlasse());
             ps.setInt(6,kinder.getKind_alter());
             ps.setString(7,kinder.getImage());
-
             ps.executeUpdate();
-
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if(generatedKeys.next()){
+                return generatedKeys.getInt(1);
+            }
         }catch (SQLException e){
 
         }
+        return 0;
     }
     public static void AddClassroom(Klasse classroom){
         try {
@@ -448,7 +445,7 @@ public class DB {
         try{
             String sql="INSERT INTO bezahlung (zahlungId,betrag,datum) VALUES (?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1,bezahlung.getBezahlungId());
+            ps.setInt(1,bezahlung.getZahlungId());
             ps.setInt(2,bezahlung.getBetrag());
             ps.setDate(3,Date.valueOf(bezahlung.getDatum()));
             ps.executeUpdate();
@@ -616,5 +613,21 @@ public class DB {
             System.out.println(e.getMessage());
         }
         return bezahlungs;
+    }
+    public static ArrayList<Zahlung> getZahlungenVomEltern(int elternId){
+        ArrayList<Zahlung> zahlungs = new ArrayList<>();
+        try{
+            ResultSet set = stmt.executeQuery("SELECT * FROM zahlung WHERE elternId="+elternId);
+            while (set.next()){
+                Zahlung zahlung = new Zahlung(
+                        set.getInt("zahlungId"), set.getInt("personalId"),
+                        set.getInt("elternId"), set.getInt("kinderId"),
+                        set.getInt("gesamtesumme"), set.getInt("gezahlterBetrag"));
+                zahlungs.add(zahlung);
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return  zahlungs;
     }
 }
