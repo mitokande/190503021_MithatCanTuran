@@ -31,7 +31,8 @@ public class Settings implements Initializable {
     public TextField benutzername;
     @FXML
     public TextField email;
-
+    @FXML
+    public Button rechnung;
     public User myuser;
     public String pass;
 
@@ -41,6 +42,9 @@ public class Settings implements Initializable {
         benutzername.setText(l.getBenutzername());
         pass = l.getPasswort();
         email.setText(l.getEmail());
+        if(!HelloController.user.isAdmin){
+            rechnung.setVisible(false);
+        }
     }
     public void changePass() throws IOException {
         FXMLLoader passwortpopup = new FXMLLoader(Hydra.class.getResource("popup-change-passwort.fxml"));
@@ -84,5 +88,18 @@ public class Settings implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setData();
+    }
+
+
+    public void rechnung() throws IOException {
+//        System.getProperty("user.home")+"/KinderGarten
+        //String path = System.getProperty("user.home")+"/Desktop/";
+        FXMLLoader rechnungpopup = new FXMLLoader(Hydra.class.getResource("popup-details-rechnung.fxml"));
+        Scene scene = new Scene(rechnungpopup.load());
+        PopupDetailsRechnung popupDetailsRechnung = rechnungpopup.getController();
+        Stage stage = new Stage();
+        stage.setTitle("Rechnung Printen");
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -19,7 +19,7 @@ public class DB {
             System.out.println("Connection to SQLite has been established.");
             stmt = conn.createStatement();
             //stmt.executeUpdate("CREATE  TABLE Klasse (KlasseId int, )")
-            ResultSet res = stmt.executeQuery("SELECT * FROM users");
+            ResultSet res = stmt.executeQuery("SELECT * FROM admins");
             while(res.next()){
                 System.out.println("username: "+res.getString("username")+" Pass: "+res.getString("password"));
             }
@@ -124,7 +124,7 @@ public class DB {
     public static ArrayList<Lehrer> getLehrer(){
         try{
             ArrayList<Lehrer> lehrerArrayList = new ArrayList<>();
-            ResultSet set = stmt.executeQuery("SELECT  * FROM lehrer");
+            ResultSet set = stmt.executeQuery("SELECT  * FROM lehrer WHERE lehrerId IS NOT 0");
             while(set.next()){
                 Lehrer lehrer = new Lehrer(set.getInt("lehrerId"),set.getString("vorname"),set.getString("nachname"),set.getString("burgerId"),set.getString("benutzername"),set.getString("passwort"),set.getString("email"));
                 lehrerArrayList.add(lehrer);
@@ -488,6 +488,7 @@ public class DB {
         try{
             stmt.executeUpdate("DELETE FROM eltern WHERE elternId="+id);
             stmt.executeUpdate("UPDATE kinder SET elternId=NULL WHERE elternId="+id);
+            stmt.executeUpdate("DELETE FROM zahlung,bezahlung WHERE zahlung.zahlungId=bezahlung.zahlungId AND elternId="+id);
         }catch (SQLException e){}
     }
     //endregion

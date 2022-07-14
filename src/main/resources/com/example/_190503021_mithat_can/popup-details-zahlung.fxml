@@ -86,5 +86,6 @@
          </children>
       </HBox>
       <Button layoutX="449.0" layoutY="161.0" mnemonicParsing="false" onAction="#bezahlen" text="Zahlung leisten" />
+      <VBox fx:id="vboxBezahlung" layoutX="357.0" layoutY="220.0" prefHeight="182.0" prefWidth="237.0" style="-fx-background-color: #fff;" />
    </children>
 </AnchorPane>

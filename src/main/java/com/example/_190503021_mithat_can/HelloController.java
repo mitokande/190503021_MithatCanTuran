@@ -47,6 +47,7 @@ public class HelloController {
                     user.username = username.getText();
                     user.password = password.getText();
                     user.LehrerId = res.getInt("lehrerId");
+                    user.isAdmin =  user.LehrerId == 0 ?  true : false;
                     DashboardController dbcont = dashboardfxml.getController();
                     dbcont.setUsername(res.getString("vorname"));
                     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -79,7 +80,10 @@ public class HelloController {
                 FXMLLoader dashboardfxml = new FXMLLoader(Hydra.class.getResource("Dashboard.fxml"));
                 Scene dashboardscene = new Scene(dashboardfxml.load());
                 System.out.println(dashboardscene);
-
+                user.username = username.getText();
+                user.password = password.getText();
+                user.LehrerId = res.getInt("lehrerId");
+                user.isAdmin =  user.LehrerId == 0 ?  true : false;
                 DashboardController dbcont = dashboardfxml.getController();
                 dbcont.setUsername(res.getString("vorname"));
                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -88,13 +92,14 @@ public class HelloController {
                 stage.show();
 
 
-        }else {
-            notif.setText("Hatalı Login Bilgileri");
-        }
+            }
+            else {
+                notif.setText("Hatalı Login Bilgileri");
+            }
 
         } catch (
                 SQLException | IOException e) {
-        System.out.println(e.getMessage());
-    }
+            System.out.println(e.getMessage());
+        }
     }
 }

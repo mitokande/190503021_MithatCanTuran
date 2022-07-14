@@ -6,6 +6,8 @@ public class User {
     public String username;
     public String password;
     public int LehrerId;
+
+    public boolean isAdmin;
 //    public User(String _username,String _password){
 //        username = _username;
 //        password = _password;

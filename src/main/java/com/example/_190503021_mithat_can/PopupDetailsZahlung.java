@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -35,6 +36,9 @@ public class PopupDetailsZahlung implements Initializable {
     public Label gezahlterpreis;
     @FXML
     public TextField bezahlung;
+    @FXML
+    public VBox vboxBezahlung;
+
     private ArrayList<Bezahlung> bezahlungArrayList = new ArrayList<>();
     public void update() throws IOException {
         bezahlungArrayList.forEach(bezahlung1 -> {
@@ -49,11 +53,21 @@ public class PopupDetailsZahlung implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+    public void populateBezahlungen(){
+        vboxBezahlung.getChildren().clear();
+        ArrayList<Bezahlung> bezahlungs = DB.getBezahlungVomZahlung(myZahlung.getZahlungId());
+        for (Bezahlung b : bezahlungs){
+            Text text = new Text();
+            text.setText("Bezahlung Betrag: "+ b.getBetrag()+ " Datum: "+ b.getDatum());
+            vboxBezahlung.getChildren().add(text);
+        }
+    }
     public void bezahlen(){
         Bezahlung b = new Bezahlung(0,myZahlung.getZahlungId(),Integer.parseInt(bezahlung.getText()), LocalDate.now());
         bezahlungArrayList.add(b);
         localpreis+= b.getBetrag();
         gezahlterpreis.setText("Gezahlter Preis: "+localpreis);
+        populateBezahlungen();
     }
     public void setData(Zahlung zahlung){
         System.out.println(zahlung.getZahlungId());
@@ -65,5 +79,6 @@ public class PopupDetailsZahlung implements Initializable {
         gesamtepreis.setText("Gesamte Preis: "+myZahlung.getGesamtesumme());
         localpreis = myZahlung.getGezahlterBetrag();
         gezahlterpreis.setText("Gezahlter Preis: "+localpreis);
+        populateBezahlungen();
     }
 }

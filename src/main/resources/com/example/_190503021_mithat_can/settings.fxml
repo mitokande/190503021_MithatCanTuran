@@ -60,6 +60,7 @@
             <Font size="13.0" />
          </font>
       </Button>
+      <Button fx:id="rechnung" mnemonicParsing="false" onAction="#rechnung" style="-fx-background-color: #3c5550;" text="Rechnung erstellen" textFill="WHITE" />
    </children>
    <padding>
       <Insets left="50.0" right="20.0" top="50.0" />

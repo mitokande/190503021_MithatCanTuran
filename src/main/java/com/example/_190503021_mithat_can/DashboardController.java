@@ -147,6 +147,7 @@ public class DashboardController implements Initializable {
             kindercardController.setdata(liste.get(i));
         }
         list.setSpacing(12);
+
     }
     public void openSettings() throws IOException{
         System.out.println("asd");
@@ -232,6 +233,7 @@ public class DashboardController implements Initializable {
     public void Navigation(MouseEvent event){
         AnchorPane navObj= (AnchorPane) event.getSource();
         String navId = navObj.getId();
+        popupbtn.setVisible(true);
         try {
             if(navId!=null){
                 switch (navId){
@@ -242,6 +244,9 @@ public class DashboardController implements Initializable {
                     case "teacherNAV":
                         currentView = "teacher";
                         refreshViewList(1);
+                        if(!HelloController.user.isAdmin){
+                            popupbtn.setVisible(false);
+                        }
                         break;
                     case "classroomNAV":
                         currentView = "classroom";
