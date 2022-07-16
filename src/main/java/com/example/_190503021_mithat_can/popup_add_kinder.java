@@ -1,10 +1,12 @@
 package com.example._190503021_mithat_can;
 
 import com.example._190503021_mithat_can.BaseClass.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -55,7 +57,7 @@ public class popup_add_kinder implements Initializable {
         populateareas();
         popupAddKinder = this;
     }
-    public void addkind() throws  IOException {
+    public void addkind(ActionEvent event) throws  IOException {
         Eltern e = (Eltern) eltern.getSelectionModel().getSelectedItem();
         Klasse k = (Klasse) klasse.getSelectionModel().getSelectedItem();
         Kinder kinder = new Kinder(vorname.getText(),nachname.getText(),burgerId.getText(),e,k.getKlasseId());
@@ -65,6 +67,11 @@ public class popup_add_kinder implements Initializable {
 
         Zahlung zahlung = new Zahlung(0,HelloController.user.LehrerId,e.getElternId(), id,10000,0);
         DB.AddZahlung(zahlung);
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        dash.refreshAktivitat();
+        dash.populateFilter();
         dash.refreshKinder(null);
         dash.populateFilter();
     }

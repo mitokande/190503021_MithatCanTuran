@@ -77,14 +77,15 @@ public class PopupDetailsRechnung implements Initializable {
 
             for(Zahlung zahlung : zahlungs){
                 ArrayList<Bezahlung> bezahlungArrayList = DB.getBezahlungVomZahlung(zahlung.getZahlungId());
-                contents.showText("Eltern: "+DB.getElternSingle(zahlung.getElternId()).getVorname()+
+                contents.showText("Eltern: "+DB.getElternSingle(zahlung.getElternId()).getVorname()+" "+
                                 DB.getElternSingle(zahlung.getElternId()).getNachname()+
                         " Kinder: "+ DB.getKinderSingle(zahlung.getKinderId()).getVorname()+ " "+
-                        DB.getKinderSingle(zahlung.getKinderId()).getNachname() + " için Fatura Bilgileri");
+                        DB.getKinderSingle(zahlung.getKinderId()).getNachname() + " için Fatura Bilgileri ("+
+                        zahlung.getGezahlterBetrag()+"/"+zahlung.getGesamtesumme()+")");
                 contents.newLine();
 
                 for(Bezahlung b : bezahlungArrayList){
-                    contents.showText("    Ödeme Miktarı: " + b.getBetrag() + " Ödeme Tarihi: " + b.getDatum().toString());
+                    contents.showText("    Ödeme Miktarı: " + b.getBetrag() + "TL Ödeme Tarihi: " + b.getDatum().toString());
                     contents.newLine();
 
                 }

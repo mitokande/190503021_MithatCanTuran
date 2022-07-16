@@ -9,13 +9,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._190503021_mithat_can.PopupDetailsRechnung">
    <children>
-      <Button layoutX="274.0" layoutY="352.0" mnemonicParsing="false" onAction="#createRechnung" text="Button" />
+      <Button layoutX="255.0" layoutY="352.0" mnemonicParsing="false" onAction="#createRechnung" text="PDF erzeugen" />
       <Text layoutX="86.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wählen Sie Zahlungen aus, die Sie drucken möchten" wrappingWidth="428.0378723144531">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <ScrollPane fitToWidth="true" layoutX="86.0" layoutY="73.0" prefHeight="249.0" prefWidth="428.0">
+      <ScrollPane layoutX="25.0" layoutY="75.0" prefHeight="250.0" prefWidth="558.0">
          <content>
             <VBox fx:id="vboxZahlungen" alignment="TOP_CENTER" prefHeight="236.0" prefWidth="370.0" />
          </content>

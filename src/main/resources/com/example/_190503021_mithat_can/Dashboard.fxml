@@ -160,7 +160,7 @@
                <children>
                   <AnchorPane prefHeight="615.0" prefWidth="201.0">
                      <children>
-                        <Text fill="WHITE" layoutX="39.0" layoutY="33.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter &amp; Sort" textAlignment="CENTER" wrappingWidth="122.936767578125">
+                        <Text fill="WHITE" layoutX="39.0" layoutY="33.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter" textAlignment="CENTER" wrappingWidth="122.936767578125">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -181,7 +181,7 @@
                            </content>
                         </ScrollPane>
                         <Button layoutX="70.0" layoutY="558.0" mnemonicParsing="false" onAction="#filter" prefHeight="26.0" prefWidth="62.0" text="Suchen" />
-                        <TextField fx:id="nameBar" layoutX="14.0" layoutY="518.0" prefHeight="26.0" prefWidth="174.0" />
+                        <TextField fx:id="nameBar" layoutX="14.0" layoutY="518.0" prefHeight="26.0" prefWidth="174.0" visible="false" />
                         <Text fill="WHITE" layoutX="14.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrerinen" textAlignment="CENTER" wrappingWidth="174.4000000000001">
                            <font>
                               <Font size="14.0" />
